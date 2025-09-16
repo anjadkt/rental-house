@@ -1,0 +1,79 @@
+body{
+  margin: 0;
+  padding: 50px;
+}
+
+
+
+.main-container{
+  display: flex;
+  place-content: center;
+}
+
+label{
+  margin-bottom: 3px;
+}
+
+.form-container{
+  padding:45px 35px ;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.reg-container{
+  padding:40px 30px ;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.welcome-div{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-div>h2{
+  margin: 0;
+  font-size: 35px;
+}
+
+.welcome-div>p{
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+form{
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#email,#password,.submit-btn,#name{
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.error{
+  margin-bottom: 15px;
+  padding-left: 10px;
+  margin-top: -2px;
+  color: rgba(244, 18, 18, 0.881);
+}
+
+.forgot-div{
+  text-align: end;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.submit-btn{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sign-up{
+  text-align: center;
+  margin-top: 20px;
+}
+
