@@ -21,7 +21,7 @@ label{
 }
 
 .reg-container{
-  padding:40px 30px ;
+  padding:30px 30px ;
   border: 1px solid black;
   border-radius: 20px;
 }
@@ -55,21 +55,23 @@ form{
 }
 
 .error{
+  height: 10px;
   margin-bottom: 15px;
   padding-left: 10px;
-  margin-top: -2px;
   color: rgba(244, 18, 18, 0.881);
+  font-size: 14px;
 }
 
 .forgot-div{
   text-align: end;
   margin-bottom: 20px;
-  margin-top: -10px;
+  margin-top: -5px;
 }
 
 .submit-btn{
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .sign-up{
