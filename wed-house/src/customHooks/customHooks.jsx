@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import axios from 'axios'
 
 export function  useError (){
   const [error,setError] = useReducer(updateError,{})
@@ -39,4 +40,9 @@ export function  useError (){
   }
 
   return [error,setError]
+}
+
+
+export function useFetch (url){
+  
 }
