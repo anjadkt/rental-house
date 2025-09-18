@@ -1,5 +1,32 @@
 {
   "user": [
    
+  ],
+  "products":[
+    {"id": 1, "rating":50, "name": "Atlas Runner",     "color": 4, "price": 3299},
+    {"id": 2, "rating":10, "name": "Harbor Slip-On",   "color": 3, "price": 1999},
+    {"id": 3, "rating":15, "name": "Canyon Trail Pro", "color": 5, "price": 5499},
+    {"id": 4, "rating":20, "name": "Metro Casuals",    "color": 6, "price": 2599},
+    {"id": 5, "rating":25, "name": "Nimbus Knit",      "color": 7, "price": 3999},
+    {"id": 6, "rating":30, "name": "Retro Court",      "color": 2, "price": 2299},
+    {"id": 7, "rating":35, "name": "Vertex High-Top",  "color": 4, "price": 3499},
+    {"id": 8, "rating":40, "name": "Glide Minimal",    "color": 3, "price": 2799},
+    {"id": 9, "rating":45, "name": "Summit Hiker",     "color": 6, "price": 5999},
+    {"id": 10, "rating":30, "name": "Luxe Loafer",      "color": 2, "price": 4799},
+    {"id": 11, "rating":25, "name": "Pulse Trainer",    "color": 5, "price": 2999},
+    {"id": 12, "rating":50, "name": "Eco Walker",       "color": 4, "price": 2199},
+    {"id": 13, "rating":10, "name": "Atlas Runner",     "color": 4, "price": 3299},
+    {"id": 14, "rating":15, "name": "Harbor Slip-On",   "color": 3, "price": 1999},
+    {"id": 15, "rating":20, "name": "Canyon Trail Pro", "color": 5, "price": 5499},
+    {"id": 16, "rating":25, "name": "Metro Casuals",    "color": 6, "price": 2599},
+    {"id": 17, "rating":30, "name": "Nimbus Knit",      "color": 7, "price": 3999},
+    {"id": 18, "rating":35, "name": "Retro Court",      "color": 2, "price": 2299},
+    {"id": 19, "rating":40, "name": "Vertex High-Top",  "color": 4, "price": 3499},
+    {"id": 20, "rating":45, "name": "Glide Minimal",    "color": 3, "price": 2799},
+    {"id": 21, "rating":50, "name": "Summit Hiker",     "color": 6, "price": 5999},
+    {"id": 22, "rating":10, "name": "Luxe Loafer",      "color": 2, "price": 4799},
+    {"id": 23, "rating":15, "name": "Pulse Trainer",    "color": 5, "price": 2999},
+    {"id": 24, "rating":25, "name": "Eco Walker",       "color": 4, "price": 2199}
   ]
+
 }

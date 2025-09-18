@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import axios from 'axios'
 
 export function  useError (){
@@ -42,7 +42,13 @@ export function  useError (){
   return [error,setError]
 }
 
-
 export function useFetch (url){
-  
+  const [data,setData] = useState();
+  useEffect(()=>{
+    axios.get(url)
+    .then(dataList => setData(dataList.data) )
+    .catch(err => console.log(err.message))
+  },[url]);
+
+  return [data]
 }

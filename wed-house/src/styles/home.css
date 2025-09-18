@@ -1,0 +1,235 @@
+body{
+  margin: 0;
+  font-family: Roboto;
+}
+
+header,nav,.buttons-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-overview-contianer{
+  text-align: center;
+  margin-top: 100px ;
+}
+
+.main-slogan{
+  font-size: 80px;
+  font-weight: 500;
+  font-family: Zalando Sans Expanded;
+}
+
+.main-slogan span{
+  color: rgb(250,194,60);
+}
+
+.main-image{
+  height: 450px;
+  position: relative;
+  top: -50px;
+  z-index: -1;
+}
+
+header{
+  padding: 15px 50px;
+  border-bottom: 1px solid black;
+  box-shadow: 0px 0px 5px black;
+  font-family: Roboto , Arial, Helvetica, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+header h1{
+  font-family: Lato , sans-serif;
+  margin: 0;
+}
+
+nav>div,.buttons-container>div{
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(63, 62, 62);
+  font-weight: 500;
+   &:hover{
+    color: black;
+  }
+}
+
+.nav-links{
+  color: rgb(63, 62, 62);
+  font-weight: 500;
+   &:hover{
+    color: black;
+  }
+}
+
+.downarrow{
+  margin-top: 2px;
+  margin-left: 2px;
+  height: 12px;
+}
+
+.icons{
+  height: 24px;
+  background-color: rgb(249, 249, 249);
+  padding: 6px;
+  border-radius: 18px;
+}
+
+.popular-product-container{
+  padding: 20px 60px;
+}
+
+.popular-product-div{
+  display: grid;
+  grid-template-columns: 290px 290px 290px 290px;
+}
+
+.p-product-h{
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.product-div{
+  padding: 0px 5px 20px 5px;
+  opacity: 0.8;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 10px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover{
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.product{
+  height: 80px;
+}
+
+.product-img-div{
+  background-color: rgba(243, 243, 243, 0.779) ;
+  padding: 60px 30px;
+  border-radius: 120px;
+}
+
+.product-dis{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 1;
+  top: 24px;
+}
+
+.product-count-div{
+  justify-content: start;
+}
+.product-count-div select{
+  padding: 2px 3px;
+  border: 1ps solid rgb(137, 131, 131);
+  color: rgb(159, 153, 153);
+  cursor: pointer;
+  font-weight: bold;
+  &:focus{
+    border: 1px solid black;
+  }
+}
+.product-rating-div,.product-count-div{
+  width: 75%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.product-rating-div img{
+  height: 20px;
+}
+
+.product-rating-div p{
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(94, 93, 93);
+}
+
+.product-price-div{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-price-div button{
+  background-color: rgb(232, 214, 46);
+  border: 1px solid black;
+  padding: 7px 30px;
+  border-radius: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    background-color:rgb(248, 224, 16) ;
+  }
+}
+
+.product-price-div p{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: rgb(225,113,29);
+}
+
+.product-price-div span{
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: -2px;
+  font-size: 22px;
+}
+
+.product-dis h4{
+  font-size: 20px;
+  color: rgb(60, 59, 59);
+}
+
+.product-dis p{
+  font-size: 15px;
+  color: rgb(171,171,171);
+}
+
+.product-dis img{
+  height: 30px;
+  margin-left: 50px;
+
+}
+
+.show-more-div{
+  text-align: center;
+  padding: 20px ;
+}
+
+.show-more-div>button{
+  background-color: yellow;
+  border: 1px solid black;
+  padding: 7px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+*{
+  margin: 0;
+  text-decoration: none;
+}

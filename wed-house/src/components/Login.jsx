@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import '../styles/login.css'
 import {Link,useNavigate} from 'react-router-dom'
 import { useError } from '../customHooks/customHooks'
@@ -33,9 +33,10 @@ export function Register(){
         email,
         password
       })
-      navigate('/');
+      navigate('/login');
     }
   }
+  
   return (
     <>
      <div className='main-container'>
@@ -47,20 +48,47 @@ export function Register(){
 
         <form>
           <label htmlFor="name">Name</label>
-          <input ref={e=>inputElem.current.name = e} onChange={e=>setError({type:"name",value : e.target.value})} type="text" required placeholder='Enter name' id='name' />
+          <input 
+            ref={e=>inputElem.current.name = e} 
+            onChange={e=>setError({type:"name",value : e.target.value})} 
+            type="text" 
+            required 
+            placeholder='Enter name'
+            id='name' 
+          />
+
           <div className='error'>{error.name}</div>
 
           <label htmlFor="email">Email</label>
-          <input  ref={e=>inputElem.current.email = e} onChange={e=>setError({type:"email",value : e.target.value})} type="email" required placeholder='Enter email' id='email'/>
+          <input  
+            ref={e=>inputElem.current.email = e} 
+            onChange={e=>setError({type:"email",value : e.target.value})} 
+            type="email" 
+            required 
+            placeholder='Enter email' 
+            id='email'
+          />
           <div className='error'>{error.email}</div>
 
           <label htmlFor="password">Password</label>
-          <input  ref={e=>inputElem.current.password = e} onChange={e => setError({type:"password",value : e.target.value})} type="password" required placeholder='Enter password' id='password'/>
+          <input  
+            ref={e=>inputElem.current.password = e} 
+            onChange={e => setError({type:"password",value : e.target.value})} 
+            type="password" 
+            required 
+            placeholder='Enter password' 
+            id='password'
+          />
           <div className='error'>{error.password}</div>
           
-          <input onClick={setData}  className='submit-btn' type="submit" value='Sign up now' />
+          <input 
+            onClick={setData} 
+            className='submit-btn' 
+            type="submit" 
+            value='Sign up now' 
+          />
           <div className='error'></div>
-          <div className='sign-up'> Already have an account?<Link to="/">Login </Link></div>
+          <div className='sign-up'> Already have an account?<Link to="/login">Login </Link></div>
         </form>
       </div>
      </div>
