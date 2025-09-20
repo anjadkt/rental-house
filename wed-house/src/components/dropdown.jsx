@@ -61,9 +61,9 @@ export function UserDrop(){
         <img  src="./icons/notification.png" alt="" />
         Notifications
         </div>
-       <div>
+       <div onClick={()=>localStorage.clear()}>
         <img  src="./icons/login.png" alt="" />
-        Login
+        Logout
         </div>
      </div>
     </>

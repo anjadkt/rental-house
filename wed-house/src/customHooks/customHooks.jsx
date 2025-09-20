@@ -27,13 +27,13 @@ export function  useError (){
 
       case "email" :
         const email = action.value;
-        if(!email.includes('@')){
+        if(!email.includes('@gmail.com')){
           errorObj.email = "Enter a valid email!"
         }else{
           errorObj.email = ""
         }
         return errorObj ;
-
+      
       default :
         return errorObj
     }

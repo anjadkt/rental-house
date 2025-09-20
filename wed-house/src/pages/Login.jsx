@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../styles/login.css'
 import {Link,useNavigate} from 'react-router-dom'
 import { useError } from '../customHooks/customHooks'
@@ -98,6 +98,44 @@ export function Register(){
 
 export default function Login (){
   const [error,setError] = useError();
+  const [err, setErr] = useState({});
+  const navigate = useNavigate();
+  const inputElem = useRef({
+    email : null,
+    password : null
+  })
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "rgba(192, 189, 189, 1)"; // change color
+
+    return () => {
+      document.body.style.backgroundColor = ""; // reset when leaving
+    };
+  }, []);
+
+  async function checkUser (e){
+    e.preventDefault()
+    const obj = {}
+    try{
+      const res = await axios.get(`http://localhost:5000/user?email=${inputElem.current.email.value}`);
+      const data = res.data[0] || [] ;
+      if(data.length === 0){
+        obj.email = "User not found"
+      }
+      if(data.password !== inputElem.current.password.value){
+        obj.password = "Password incorrect!"
+      }
+      
+      setErr(obj);
+
+      if(Object.keys(obj)?.length === 0){
+        localStorage.setItem('user',JSON.stringify({ user :{login : true,name :data.name,email:data.email}, cart : [],favorite : [] }));
+        navigate('/');
+      }
+    }catch(err){
+      console.log(err.message);
+    }
+  }
   
 
   return (
@@ -105,26 +143,42 @@ export default function Login (){
     <div className='main-container'>
       <div className='form-container'>
         <div className='welcome-div'>
-          <h2>WELCOME BACK</h2>
-          <p>Welcome back! please enter your details</p>
+          <h2>Login to your Account</h2>
+          <p>Get started with our app, just create<br/> an account and enjoy the<br/> experience.</p>
         </div>
 
-        <form>
+        <form className='login-form'>
+
           <label htmlFor='email'>Email</label>
-          <input onChange={e => setError({type:"email",value : e.target.value})} autoComplete='true' type='text' placeholder='Enter your email' id='email' required />
-          <div className='error'>{error.email}</div>
+          <input 
+            onChange={e => setError({type:"email",value : e.target.value})} 
+            autoComplete='true' 
+            type='text' 
+            placeholder='Enter your email' 
+            id='email' required 
+            ref={e => inputElem.current.email = e}
+          />
+          <div className='error'>{err && err.email || error.email}</div>
 
           <label htmlFor='password'>Password</label>
-          <input onChange={e => setError({type:"password",value : e.target.value})} autoComplete='true' type='password' placeholder='Enter password' id='password' required />
-          <div className='error'>{error.password}</div>
-
+          <input 
+            onChange={e => setError({type:"password",value : e.target.value})} 
+            autoComplete='true' 
+            type='password' 
+            placeholder='Enter password' 
+            id='password' 
+            required 
+            ref={e => inputElem.current.password = e}
+          />
+          <div className='error'>{error.password || err && err.password}</div>
           <div className='forgot-div'>Forgot password?</div>
 
-          <input className='submit-btn' type="submit" value='Sign in' />
-          <div className='sign-up'> Don't have an account?<Link to="/signup">signup for free </Link></div>
+          <input onClick={checkUser} className='submit-btn' type="submit" value='Sign in' />
+          <div className='sign-up'> Don't have an account?<Link to="/signup"> Signup </Link></div>
         </form>
 
       </div>
+      <img className='login-img' src="./loginpage.png" alt="login now" />
     </div>
     </>
   )
