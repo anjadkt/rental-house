@@ -1,4 +1,5 @@
 
+import { useNavigate } from 'react-router-dom';
 import { useReducer, useRef, useState } from 'react'
 import '../styles/home.css' 
 import { userObj } from '../pages/home';
@@ -8,8 +9,13 @@ export default function Product ({data}){
   const Elem = useRef({
     select :null
   })
+  const navigate = useNavigate();
 
   function addToCart (){
+    if(!userObj.user.login){
+      navigate('/login')
+      return;
+    }
     const exist = userObj.cart.find(product=> product.id === data.id);
     const qnt = Number(Elem.current.select.value) ;
     if(exist){

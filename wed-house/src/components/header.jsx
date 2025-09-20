@@ -1,12 +1,22 @@
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import Dropdown,{UserDrop} from './dropdown';
-import { useState } from 'react';
+import {  useState } from 'react';
 
 export default function Header (){
   const [drop,setDrop] = useState(false);
   const [userdrop,setUserdrop] = useState(false);
-  const {cart} = JSON.parse(localStorage.getItem('user')) ||{
+  const {cart,user} = JSON.parse(localStorage.getItem('user')) ||{
+    user : {login : false},
     cart:[]
+  }
+  const navigate = useNavigate();
+  
+  function checkLogin (){
+    if(user.login){
+      setUserdrop(!userdrop)
+    }else{
+      navigate('/login')
+    }
   }
   return (
     <>
@@ -42,13 +52,13 @@ export default function Header (){
             </Link>
           </div> 
         
-        <div className='user-container-div' onClick={()=>setUserdrop(!userdrop)}>
+        <div className='user-container-div' onClick={checkLogin}>
           <img className='icons user-icon' src="./icons/user.png" alt="" />
           <p>
             Login
-            <img style={{transform : userdrop ? "rotate(-180deg)" : "rotate(0deg)",color:"green",transition: "transform 0.3s ease"}} className='downarrow use-arrow' src="./icons/downarrow.png" />
+            <img style={{transform : user.login && userdrop ? "rotate(-180deg)" : "rotate(0deg)",color:"green",transition: "transform 0.3s ease"}} className='downarrow use-arrow' src="./icons/downarrow.png" />
           </p>
-          {userdrop && <UserDrop/>}
+          { user.login && userdrop && <UserDrop/>}
         </div>
       </div>
 
