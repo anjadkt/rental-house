@@ -27,7 +27,7 @@ export function Register(){
       }
     }
     if(isError){
-      axios.post('http://localhost:5000/user',{
+      axios.post('http://localhost:5000/users',{
         id : Date.now(),
         name,
         email,
@@ -117,7 +117,8 @@ export default function Login (){
     e.preventDefault()
     const obj = {}
     try{
-      const res = await axios.get(`http://localhost:5000/user?email=${inputElem.current.email.value}`);
+      const res = await axios.get(`http://localhost:5000/users?email=${inputElem.current.email.value}`);
+      console.log(res)
       const data = res.data[0] || [] ;
       if(data.length === 0){
         obj.email = "User not found"
