@@ -15,8 +15,8 @@ export default function Product ({data}){
     if(exist){
       exist.quantity += qnt ;
     }else{
-      data.quantity = qnt;
-      userObj.cart.push(data);
+      const newProduct = {...data,quantity : qnt}
+      userObj.cart.push(newProduct);
     }
     localStorage.setItem('user',JSON.stringify(userObj));
     Elem.current.select.value = 1 ;
