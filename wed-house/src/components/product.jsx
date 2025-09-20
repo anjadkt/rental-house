@@ -1,6 +1,28 @@
 
-import '../styles/home.css'
+import { useReducer, useRef, useState } from 'react'
+import '../styles/home.css' 
+import { userObj } from '../pages/home';
+
 export default function Product ({data}){
+  const [fav,setFav] = useState(false);
+  const Elem = useRef({
+    select :null
+  })
+
+  function addToCart (){
+    const exist = userObj.cart.find(product=> product.id === data.id);
+    const qnt = Number(Elem.current.select.value) ;
+    if(exist){
+      exist.quantity += qnt ;
+    }else{
+      data.quantity = qnt;
+      userObj.cart.push(data);
+    }
+    localStorage.setItem('user',JSON.stringify(userObj));
+    Elem.current.select.value = 1 ;
+  }
+
+
   return (
     <>
      <div className='product-div'>
@@ -9,8 +31,10 @@ export default function Product ({data}){
           <h4>{data.name}</h4 >
           <p>{data.color} Colors</p>
         </div>
-        <div>
-          <img src="./icons/favorite3.png" alt="favorite" />
+        <div onClick={()=>setFav(!fav)}>
+          {
+            fav ? <img src="./icons/favorite.png" alt="favorite" /> : <img src="./icons/favorite3.png" alt="favorite" /> 
+          }
         </div>
         
       </div>
@@ -24,7 +48,8 @@ export default function Product ({data}){
         <p>{(data.rating/10).toFixed(1)}</p>
       </div>
       <div className='product-count-div'>
-        <select>
+        <span>Quantity:</span>
+        <select ref={e => Elem.current.select = e}>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -38,7 +63,7 @@ export default function Product ({data}){
         </select>
       </div>
       <div className='product-price-div'>
-       <button>Add to Cart</button>
+       <button onClick={addToCart}>Add to Cart</button>
        <p><span>&#8377;</span>{data.price}</p>
       </div>
 
