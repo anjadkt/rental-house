@@ -5,14 +5,14 @@ import {  useEffect, useState } from 'react';
 export default function Header (){
   const [drop,setDrop] = useState(false);
   const [userdrop,setUserdrop] = useState(false);
-  const {cart,user} = JSON.parse(localStorage.getItem('user')) || {
-    user : {login:false},
+  const {cart,login,name} = JSON.parse(localStorage.getItem('user')) || {
+    login : false,
     cart :[]
   }
   const navigate = useNavigate();
   
   function checkLogin (){
-    if(user.login){
+    if(login){
       setUserdrop(!userdrop)
     }else{
       navigate('/login')
@@ -56,10 +56,10 @@ export default function Header (){
         <div className='user-container-div' onClick={checkLogin}>
           <img className='icons user-icon' src="./icons/user.png" alt="" />
           <p>
-            {user.login ? user.name : "Login"}
-            <img style={{transform : user.login && userdrop ? "rotate(-180deg)" : "rotate(0deg)",color:"green",transition: "transform 0.3s ease"}} className='downarrow use-arrow' src="./icons/downarrow.png" />
+            {login ? name : "Login"}
+            <img style={{transform : login && userdrop ? "rotate(-180deg)" : "rotate(0deg)",color:"green",transition: "transform 0.3s ease"}} className='downarrow use-arrow' src="./icons/downarrow.png" />
           </p>
-          { user.login && userdrop && <UserDrop/>}
+          { login && userdrop && <UserDrop/>}
         </div>
       </div>
 

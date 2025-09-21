@@ -4,7 +4,7 @@ import '../styles/cart.css'
 import CartItem from '../components/cartItems'
 
 export default function Cart(){
-  const {cart} = JSON.parse(localStorage.getItem('user')) || {
+  const {cart,name} = JSON.parse(localStorage.getItem('user')) || {
     cart : []
   }
   return (
@@ -14,7 +14,7 @@ export default function Cart(){
           <Link className='nav-links' to='/'><h1>FootSter.</h1></Link>
         </div>
         <div className='cart-item'>
-          <h2>Anjad's Cart (<span>{cart.length} Items</span>)</h2>
+          <h2>{name}'s Cart (<span>{cart.length} Items</span>)</h2>
         </div>
         <div>
           <input className='cart-search-bar' type="text" placeholder='Search for products..' />
@@ -33,7 +33,7 @@ export default function Cart(){
         <div className='cart-order-summary'>
           <h3>Order Summary</h3>
           <div>
-            <div>Items (3):</div>
+            <div>Items ({cart.length}):</div>
             <div>$42.75</div>
           </div>
           <div>

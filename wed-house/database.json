@@ -1,10 +1,13 @@
 {
   "users": [
     {
-      "id": 1758388279985,
+      "id": 1758391717607,
+      "login": false,
       "name": "anjad",
       "email": "anjad076@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "cart": [],
+      "favorite": []
     }
   ],
   "products": [

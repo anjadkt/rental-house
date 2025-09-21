@@ -1,4 +1,6 @@
 
+  import {Link , useNavigate} from 'react-router-dom'
+  
   const data = {
     products :["Casuals","Sports","Heavy-duty","Traditional","Indoor","Minimal"],
     category :["Mens","Women","Kids","Infants","Unisex"],
@@ -42,6 +44,7 @@ export default function Dropdown(){
 }
 
 export function UserDrop(){
+  const navigate = useNavigate();
   return(
     <>
      <div className="user-drop-div">
@@ -53,7 +56,7 @@ export function UserDrop(){
         <img  src="./icons/orders.png" alt="orders" />
         Orders
         </div>
-       <div>
+       <div onClick={()=>navigate('/wishlist')}>
         <img  src="./icons/favorite.png" alt="" />
         Wishlist
         </div>

@@ -12,7 +12,7 @@ export default function Product ({data}){
   const navigate = useNavigate();
 
   function addToCart (){
-    if(!userObj.user.login){
+    if(!userObj.login){
       navigate('/login')
       return;
     }
@@ -24,6 +24,7 @@ export default function Product ({data}){
       const newProduct = {...data,quantity : qnt}
       userObj.cart.push(newProduct);
     }
+    alert('Item added to cart');
     localStorage.setItem('user',JSON.stringify(userObj));
     Elem.current.select.value = 1 ;
   }

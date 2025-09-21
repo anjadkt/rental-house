@@ -3,7 +3,6 @@ import Header from "../components/header"
 import { useFetch } from "../customHooks/customHooks"
 import Product from "../components/product"
 import Title from '../components/title'
-import { use } from 'react'
 
 export default function Products(){
   const [products] = useFetch('http://localhost:5000/products?_page=1&_limit=8');

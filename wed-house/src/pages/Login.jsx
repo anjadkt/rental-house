@@ -29,9 +29,12 @@ export function Register(){
     if(isError){
       axios.post('http://localhost:5000/users',{
         id : Date.now(),
+        login : false,
         name,
         email,
-        password
+        password,
+        cart :[],
+        favorite:[]
       })
       navigate('/login');
     }
@@ -118,8 +121,8 @@ export default function Login (){
     const obj = {}
     try{
       const res = await axios.get(`http://localhost:5000/users?email=${inputElem.current.email.value}`);
-      console.log(res)
       const data = res.data[0] || [] ;
+      console.log(data)
       if(data.length === 0){
         obj.email = "User not found"
       }
@@ -130,7 +133,7 @@ export default function Login (){
       setErr(obj);
 
       if(Object.keys(obj)?.length === 0){
-        localStorage.setItem('user',JSON.stringify({ user :{login : true,name :data.name,email:data.email}, cart : [],favorite : [] }));
+        localStorage.setItem('user',JSON.stringify({...data,login : true}));
         navigate('/');
       }
     }catch(err){
