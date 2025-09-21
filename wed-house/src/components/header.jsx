@@ -10,14 +10,6 @@ export default function Header (){
     cart :[]
   }
   const navigate = useNavigate();
-  
-  function checkLogin (){
-    if(login){
-      setUserdrop(!userdrop)
-    }else{
-      navigate('/login')
-    }
-  }
 
   return (
     <>
@@ -46,14 +38,12 @@ export default function Header (){
           <img className='icons search-icon' src="./icons/search.png" alt="search for products.." />
         </div>
         
-          <div className='cart-div'>
-            <Link to='/cart'>
+          <div className='cart-div' onClick={ ()=> login ? navigate('/cart') : navigate('/login')}>
             <img className='icons' src="./icons/cart.png" alt="" />
             <div className='cart-count-div'>{cart.length}</div>
-            </Link>
           </div> 
         
-        <div className='user-container-div' onClick={checkLogin}>
+        <div className='user-container-div' onClick={()=> login ? setUserdrop(!userdrop) : navigate('/login') }>
           <img className='icons user-icon' src="./icons/user.png" alt="" />
           <p>
             {login ? name : "Login"}

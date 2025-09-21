@@ -4,9 +4,7 @@ import '../styles/cart.css'
 import CartItem from '../components/cartItems'
 
 export default function Cart(){
-  const {cart,name} = JSON.parse(localStorage.getItem('user')) || {
-    cart : []
-  }
+  const {cart,name} = JSON.parse(localStorage.getItem('user'));
   return (
     <>
      <header className='header-div'>
