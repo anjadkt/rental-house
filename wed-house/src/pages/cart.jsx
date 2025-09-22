@@ -43,7 +43,6 @@ export default function Cart(){
 
   useEffect(()=>{
     localStorage.setItem("user",JSON.stringify(userObj));
-    setTotal(()=> calcPrice());
   },[userObj]);
 
   return (
