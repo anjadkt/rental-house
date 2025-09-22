@@ -69,7 +69,7 @@ export default function Header (){
         search && 
         <div className='search-output-div'>
           {
-            data && <Product data={data[0]} />
+            data &&  <Product data={data[0]} />
           }
         </div>
       }

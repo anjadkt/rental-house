@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../styles/home.css'
 import '../styles/cart.css'
 import CartItem from '../components/cartItems'
@@ -7,10 +7,12 @@ import { useEffect, useReducer, useState } from 'react';
 export default function Cart(){
   const userObject = JSON.parse(localStorage.getItem('user'));
   const {cart,name} = userObject;
+  const navigate = useNavigate();
 
   const [price,setTotal] = useState(calcPrice);
 
   const [userObj,dispatch] = useReducer(updateCart,userObject);
+
   function updateCart(userObj,action){
     const newObj = {...userObj,cart : [...userObj.cart]}
     switch (action.type){
@@ -104,10 +106,11 @@ export default function Cart(){
             <h4>&#8377;{price.total}</h4>
           </div>
           <div>
-            <button>Place your Order</button>
+            <button onClick={()=>cart.length === 0 ? navigate('/') : navigate('/orderSummary')}>Place your Order</button>
           </div>
         </div>
      </div>
+     {/* <h2 className='order-review'>Saved for Later Items</h2> */}
     </>
   )
 }

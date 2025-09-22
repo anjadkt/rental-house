@@ -6,6 +6,7 @@ import Products from './pages/products'
 import Blogs from './pages/blogs'
 import Cart from './pages/cart'
 import Wishlist from './pages/wishlist'
+import OrderSummary from './pages/ordersummary'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path={'/blogs'} element={<Blogs />} />
       <Route path={'/cart'} element ={<Cart />} />
       <Route path={'/wishlist'} element ={<Wishlist/>} />
+      <Route path={'/orderSummary'} element ={<OrderSummary/>} />
     </Routes>
     </>
   )
