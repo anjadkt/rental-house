@@ -1,8 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
-import { useReducer, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import '../styles/home.css' 
-import { userObj } from '../pages/home';
 
 export default function Product ({data}){
   const [fav,setFav] = useState(false);
@@ -10,20 +9,26 @@ export default function Product ({data}){
     select :null
   })
   const navigate = useNavigate();
+  const userObj = JSON.parse(localStorage.getItem('user')) || {
+    login : false,
+    cart :[]
+  }
+  const {login,cart} = userObj;
 
   function addToCart (){
-    if(!userObj.login){
+    if(!login){
       navigate('/login')
       return;
     }
-    const exist = userObj.cart.find(product=> product.id === data.id);
+    const exist = cart.find(product=> product.id === data.id);
     const qnt = Number(Elem.current.select.value) ;
     if(exist){
       exist.quantity += qnt ;
     }else{
       const newProduct = {...data,quantity : qnt}
-      userObj.cart.push(newProduct);
+      cart.push(newProduct);
     }
+    userObj.cart = cart ;
     alert('Item added to cart');
     localStorage.setItem('user',JSON.stringify(userObj));
     Elem.current.select.value = 1 ;

@@ -5,8 +5,6 @@ import Product from '../components/product';
 import Header from '../components/header';
 import Title from '../components/title';
 
-export const userObj = JSON.parse(localStorage.getItem('user'))  
-
 export default function Home (){
   const [products] = useFetch(' http://localhost:5000/products?_page=1&_limit=8');
 

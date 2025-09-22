@@ -49,7 +49,7 @@ export default function Header (){
             {login ? name : "Login"}
             <img style={{transform : login && userdrop ? "rotate(-180deg)" : "rotate(0deg)",color:"green",transition: "transform 0.3s ease"}} className='downarrow use-arrow' src="./icons/downarrow.png" />
           </p>
-          { login && userdrop && <UserDrop/>}
+          { userdrop && <UserDrop/>}
         </div>
       </div>
 
