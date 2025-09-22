@@ -16,6 +16,7 @@ export default function Cart(){
     switch (action.type){
       case "remove":
         newObj.cart = newObj.cart.filter((_,i)=> action.index !== i);
+        setTotal(calcPrice);
        return newObj;
       default :
        return newObj ;
@@ -23,6 +24,7 @@ export default function Cart(){
   }
 
   function calcPrice (){
+    const {cart} = JSON.parse(localStorage.getItem('user'));
     const priceObj = {
       items : 0,
       shipping : 0,
