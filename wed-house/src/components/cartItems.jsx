@@ -12,9 +12,9 @@ export default function CartItem({data,dispatch,index}){
           <h4>&#8377;{data.price}</h4>
           <div className="quantity-div">
             Quantity :
-            <button>-</button>
+            <button onClick={()=>dispatch({type : "dec",data :data,index :index})}>-</button>
             <span>{data.quantity}</span>
-            <button >+</button>
+            <button onClick={()=>dispatch({type : "inc",data :data,index :index})} >+</button>
           </div>
           <div className="save-remove-div">
             <button className="save-later">Save for Later</button>

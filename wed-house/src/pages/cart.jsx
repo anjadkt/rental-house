@@ -16,8 +16,15 @@ export default function Cart(){
     switch (action.type){
       case "remove":
         newObj.cart = newObj.cart.filter((_,i)=> action.index !== i);
-        setTotal(calcPrice);
-       return newObj;
+        return newObj;
+      case "inc" :
+        newObj.cart = newObj.cart.toSpliced(action.index,1,
+          {...action.data,quantity : action.data.quantity + 1});
+        return newObj;
+      case "dec" :
+        newObj.cart = newObj.cart.toSpliced(action.index,1,
+          {...action.data,quantity : Math.max(action.data.quantity-1,1)});
+        return newObj;
       default :
        return newObj ;
     }
