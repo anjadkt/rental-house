@@ -43,6 +43,7 @@ export default function Cart(){
 
   useEffect(()=>{
     localStorage.setItem("user",JSON.stringify(userObj));
+    setTotal(calcPrice);
   },[userObj]);
 
   return (
@@ -63,9 +64,13 @@ export default function Cart(){
      <div className='all-cart-items'>
         <div className="cart-items">
           {
-            cart.map((v,i)=>(
-              <CartItem dispatch={dispatch} index={i} key={i} data={v}/>
-            ))
+            (cart.length === 0) ? (
+              <h2 className='empty-cart'>(Cart is empty)</h2>
+            ):(
+              cart.map((v,i)=>(
+                <CartItem dispatch={dispatch} index={i} key={i} data={v}/>
+              ))
+            )
           }
         </div>
         <div className='cart-order-summary'>

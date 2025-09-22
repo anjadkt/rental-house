@@ -14,7 +14,7 @@ export default function CartItem({data,dispatch,index}){
             Quantity :
             <button>-</button>
             <span>{data.quantity}</span>
-            <button>+</button>
+            <button >+</button>
           </div>
           <div className="save-remove-div">
             <button className="save-later">Save for Later</button>
