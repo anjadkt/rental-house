@@ -34,7 +34,9 @@ export default function Product ({data}){
   Elem.current.select.value = 1;
 }
 
-
+  if(!data){
+    return <h3 className='no-product'>No product Found</h3>
+  }
   return (
     <>
      <div className='product-div'>

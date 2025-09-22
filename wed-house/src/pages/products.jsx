@@ -5,8 +5,8 @@ import Product from "../components/product"
 import Title from '../components/title'
 
 export default function Products(){
-  const [products] = useFetch('http://localhost:5000/products?_page=1&_limit=8');
-  const [branded] = useFetch('http://localhost:5000/branded?_page=1&_limit=8')
+  const [products] = useFetch('http://localhost:5000/products');
+  const [branded] = useFetch('http://localhost:5000/branded')
   return(
     <>
      <Header />

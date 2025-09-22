@@ -325,3 +325,22 @@ nav>div,.buttons-container>div{
 .user-drop-div img{
   height: 18px;
 }
+
+.search-output-div{ 
+  background-color: white;
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  right: 10px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0px 2px 5px black;
+  border: none;
+  display: grid;
+  grid-template-columns: 280px 280px 280px 280px;
+  padding: 20px;
+}
+
+.no-product{
+  margin: 10px 50px;
+  color: rgba(179, 179, 179, 0.785);
+}
