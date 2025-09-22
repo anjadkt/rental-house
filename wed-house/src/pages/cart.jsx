@@ -2,9 +2,48 @@ import {Link} from 'react-router-dom'
 import '../styles/home.css'
 import '../styles/cart.css'
 import CartItem from '../components/cartItems'
+import { useEffect, useReducer, useState } from 'react';
 
 export default function Cart(){
-  const {cart,name} = JSON.parse(localStorage.getItem('user'));
+  const userObject = JSON.parse(localStorage.getItem('user'));
+  const {cart,name} = userObject;
+
+  const [price,setTotal] = useState(calcPrice);
+
+  const [userObj,dispatch] = useReducer(updateCart,userObject);
+  function updateCart(userObj,action){
+    const newObj = {...userObj,cart : [...userObj.cart]}
+    switch (action.type){
+      case "remove":
+        newObj.cart = newObj.cart.filter((_,i)=> action.index !== i);
+       return newObj;
+      default :
+       return newObj ;
+    }
+  }
+
+  function calcPrice (){
+    const priceObj = {
+      items : 0,
+      shipping : 0,
+      beforTax : 0,
+      tax : 0,
+      total : 0 
+    }
+    cart.forEach(v =>{
+      priceObj.items += v.price * v.quantity ;
+    });
+    priceObj.beforTax = priceObj.shipping + priceObj.items;
+    priceObj.tax = Math.round(priceObj.items * 0.1) ;
+    priceObj.total = priceObj.beforTax + priceObj.tax ;
+    return priceObj ;
+  }
+
+  useEffect(()=>{
+    localStorage.setItem("user",JSON.stringify(userObj));
+    setTotal(()=> calcPrice());
+  },[userObj]);
+
   return (
     <>
      <header className='header-div'>
@@ -24,7 +63,7 @@ export default function Cart(){
         <div className="cart-items">
           {
             cart.map((v,i)=>(
-              <CartItem key={i} data={v}/>
+              <CartItem dispatch={dispatch} index={i} key={i} data={v}/>
             ))
           }
         </div>
@@ -32,24 +71,24 @@ export default function Cart(){
           <h3>Order Summary</h3>
           <div>
             <div>Items ({cart.length}):</div>
-            <div>$42.75</div>
+            <div>&#8377;{price.items}</div>
           </div>
           <div>
             <div>Shipping & handling:</div>
-            <div>$4.99</div>
+            <div>&#8377;{price.shipping}</div>
           </div>
           <div>
             <div>Total before tax:</div>
-            <div>$47.74</div>
+            <div>&#8377;{price.beforTax}</div>
           </div>
           <div>
             <div>Estimated tax (10%):</div>
-            <div>$4.77</div>
+            <div>&#8377;{price.tax}</div>
           </div>
           <hr />
           <div>
             <h4>Order total:</h4>
-            <h4>$52.51</h4>
+            <h4>&#8377;{price.total}</h4>
           </div>
           <div>
             <button>Place your Order</button>

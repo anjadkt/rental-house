@@ -9,30 +9,30 @@ export default function Product ({data}){
     select :null
   })
   const navigate = useNavigate();
-  const userObj = JSON.parse(localStorage.getItem('user')) || {
-    login : false,
-    cart :[]
-  }
-  const {login,cart} = userObj;
+  const [userObj,setUserObj] = useState(JSON.parse(localStorage.getItem('user')) || {login : false,});
 
-  function addToCart (){
-    if(!login){
-      navigate('/login')
-      return;
-    }
-    const exist = cart.find(product=> product.id === data.id);
-    const qnt = Number(Elem.current.select.value) ;
-    if(exist){
-      exist.quantity += qnt ;
-    }else{
-      const newProduct = {...data,quantity : qnt}
-      cart.push(newProduct);
-    }
-    userObj.cart = cart ;
-    alert('Item added to cart');
-    localStorage.setItem('user',JSON.stringify(userObj));
-    Elem.current.select.value = 1 ;
+  function addToCart() {
+  if (!userObj.login) {
+    navigate('/login');
+    return;
   }
+
+  const updatedUser = JSON.parse(localStorage.getItem('user'));
+
+  const exist = updatedUser.cart.find(product => product.id === data.id);
+  const qnt = Number(Elem.current.select.value);
+
+  if (exist) {
+    exist.quantity += qnt;
+  } else {
+    const newProduct = { ...data, quantity: qnt };
+    updatedUser.cart.push(newProduct);
+  }
+
+  alert('Item added to cart');
+  localStorage.setItem('user', JSON.stringify(updatedUser));
+  Elem.current.select.value = 1;
+}
 
 
   return (

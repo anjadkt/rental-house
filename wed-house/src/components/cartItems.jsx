@@ -1,4 +1,4 @@
-export default function CartItem({data}){
+export default function CartItem({data,dispatch,index}){
   return (
     <>
      <div className="cart-product-container">
@@ -18,14 +18,14 @@ export default function CartItem({data}){
           </div>
           <div className="save-remove-div">
             <button className="save-later">Save for Later</button>
-            <button>Remove</button>
+            <button onClick={()=>dispatch({type : "remove",index : index})}>Remove</button>
           </div>
         </div>
         <div className="Product-delivery-div">
           <h4>Choose a delivery option :</h4>
           <div>
             <label htmlFor="delivery1">
-              <input id="delivery1" type="radio" />
+              <input id="delivery1" type="radio" defaultChecked />
               <p>Tuesday, June 21<br /><span>FREE Shipping</span></p>
             </label>
           </div>
