@@ -61,7 +61,9 @@ export default function OrderSummary (){
       city : Elems.current.city.value,
       adres : Elems.current.adres.value,
       state : Elems.current.state.value,
-      country : Elems.current.country.value
+      country : Elems.current.country.value,
+      method : Elems.current.method.value,
+      total : price.total 
     }
     setUserObj(pre =>{
       const userObj = {...pre , address : addrObj}
@@ -85,7 +87,12 @@ export default function OrderSummary (){
         adres : Elems.current.adres.value
       }
     }
-    
+    setUserObj(pre =>{
+      const newUser = {...pre,cart:[] ,orders :[...pre.orders,orderObj]}
+      return newUser
+    })
+    console.log(userObj);
+    navigate('/confirm');
   }
 
   useEffect(()=>{

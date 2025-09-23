@@ -122,7 +122,6 @@ export default function Login (){
     try{
       const res = await axios.get(`http://localhost:5000/users?email=${inputElem.current.email.value}`);
       const data = res.data[0] || [] ;
-      console.log(data)
       if(data.length === 0){
         obj.email = "User not found"
       }
@@ -133,7 +132,7 @@ export default function Login (){
       setErr(obj);
 
       if(Object.keys(obj)?.length === 0){
-        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null,address : null,orders : null}));
+        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null,address : null,orders : []}));
         navigate('/');
       }
     }catch(err){

@@ -1,37 +1,10 @@
 {
   "users": [
     {
-      "id": 1758391717607,
+      "id": 1758624897419,
       "login": false,
       "name": "anjad",
-      "email": "anjad076@gmail.com",
-      "password": "123456",
-      "cart": [],
-      "favorite": []
-    },
-    {
-      "id": 1758479846434,
-      "login": false,
-      "name": "mansa",
-      "email": "zathanaju@gmail.com",
-      "password": "123456",
-      "cart": [],
-      "favorite": []
-    },
-    {
-      "id": 1758564822455,
-      "login": false,
-      "name": "rishad pk",
-      "email": "rishad@gmail.com",
-      "password": "123456",
-      "cart": [],
-      "favorite": []
-    },
-    {
-      "id": 1758597978620,
-      "login": false,
-      "name": "jumana",
-      "email": "jumanafathimaep@gmail.com",
+      "email": "anjad.dev@gmail.com",
       "password": "123456",
       "cart": [],
       "favorite": []
