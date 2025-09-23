@@ -133,7 +133,7 @@ export default function Login (){
       setErr(obj);
 
       if(Object.keys(obj)?.length === 0){
-        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null,address : null}));
+        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null,address : null,orders : null}));
         navigate('/');
       }
     }catch(err){

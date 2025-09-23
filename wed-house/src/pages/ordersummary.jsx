@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function OrderSummary (){
   const [userObj,setUserObj] = useState(JSON.parse(localStorage.getItem('user')));
+  const [confirm,setConfirm] = useState(false);
   const [price,setPrice] = useState({
     items : 0,
     handle : 0,
@@ -60,15 +61,31 @@ export default function OrderSummary (){
       city : Elems.current.city.value,
       adres : Elems.current.adres.value,
       state : Elems.current.state.value,
-      country : Elems.current.country.value,
-      method : Elems.current.method.value,
-      total : price.total
+      country : Elems.current.country.value
     }
     setUserObj(pre =>{
       const userObj = {...pre , address : addrObj}
       return userObj ;
     })
-    navigate('/confirm')
+  }
+
+  function setOrder(){
+    const dateCon = new Date()
+    const orderObj= {
+      orderId : Date.now(),
+      date : dateCon.toLocaleString(),
+      status : "Order Placed",
+      type : Elems.current.method.value ,
+      total : price.total,
+      cart :[...userObj.cart],
+      to : {
+        name : Elems.current.name.value,
+        number : Number(Elems.current.number.value),
+        pincode : Number(Elems.current.pincode.value),
+        adres : Elems.current.adres.value
+      }
+    }
+    
   }
 
   useEffect(()=>{
@@ -110,7 +127,7 @@ export default function OrderSummary (){
           </div>
           <div className='order-address-details'>
             <h2>Delivery Address</h2>
-            <form onSubmit={(e)=>setAdress(e)} className='address-form'>
+            <form onSubmit={(e)=>{setAdress(e); setConfirm(!confirm)}} className='address-form'>
               <div>
                 <input ref={e=>Elems.current.name = e} required type="text" placeholder='Name' />
                 <input ref={e=>Elems.current.number = e} required type="number" placeholder='Number'/>
@@ -135,7 +152,7 @@ export default function OrderSummary (){
                   <option>DEBIT CARD</option>
                 </select>
               </div>
-              <input  className='set-address' type="submit" value='SAVE & DELIVER HERE' />
+              <input className='set-address' type="submit" value='SAVE & DELIVER HERE' />
             </form>
           </div>
         </div>
@@ -159,12 +176,24 @@ export default function OrderSummary (){
           </div>
           <div>
             <div>Discount :</div>
-            <div>- &#8377;{price.discount}</div>
+            <div>&#8377;{price.discount}</div>
           </div>
           <hr />
           <div>
             <h4>Total Payable :</h4>
             <h4>&#8377;{price.total}</h4>
+          </div>
+        </div>
+      </div>
+      <div style={{display : confirm ? "block" : "none"}} className='confirm-your-order'>
+        <div className='confirm-message-div'>
+          <h2>Confirm Your Order</h2>
+          <img className='confirm-message-img' src="./confirm-order.png" alt="confirm your order" />
+          <p>Please review your details<br />before confirming.</p>
+          <hr />
+          <div>
+            <button onClick={()=>setConfirm(!confirm)} className='cancel'>Cancel</button>
+            <button onClick={setOrder} className='confirm'>Confirm</button>
           </div>
         </div>
       </div>
