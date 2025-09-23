@@ -1,3 +1,5 @@
+import { toast, ToastContainer } from "react-toastify"
+
 export default function CartItem({data,dispatch,index}){
   return (
     <>
@@ -18,7 +20,10 @@ export default function CartItem({data,dispatch,index}){
           </div>
           <div className="save-remove-div">
             <button className="save-later">Save for Later</button>
-            <button onClick={()=>dispatch({type : "remove",index : index})}>Remove</button>
+            <button onClick={()=>{
+              toast.warning("Item removed");
+              dispatch({type : "remove",index : index})
+            }}>Remove</button>
           </div>
         </div>
         <div className="Product-delivery-div">
@@ -43,6 +48,7 @@ export default function CartItem({data,dispatch,index}){
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={1000} />
      </div>
     </>
   )

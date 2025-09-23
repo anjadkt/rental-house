@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef, useState } from 'react'
 import '../styles/home.css' 
+import{toast,ToastContainer} from 'react-toastify'
 
 export default function Product ({data}){
   const [fav,setFav] = useState(false);
@@ -29,7 +30,7 @@ export default function Product ({data}){
     updatedUser.cart.push(newProduct);
   }
 
-  alert('Item added to cart');
+  toast.success("Item added")
   localStorage.setItem('user', JSON.stringify(updatedUser));
   Elem.current.select.value = 1;
 }
@@ -80,7 +81,7 @@ export default function Product ({data}){
        <button onClick={addToCart}>Add to Cart</button>
        <p><span>&#8377;</span>{data.price}</p>
       </div>
-
+      <ToastContainer autoClose={1000} />
      </div>
     </>
   )
