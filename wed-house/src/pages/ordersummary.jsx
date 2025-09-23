@@ -1,16 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useRef } from 'react'
 import '../styles/order.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function OrderSummary (){
   const [userObj,setUserObj] = useState(JSON.parse(localStorage.getItem('user')));
   const [price,setPrice] = useState({
     items : 0,
     handle : 0,
+    tax :0,
     platform : 0,
     discount : 0,
     total : 0
   });
+  const navigate = useNavigate();
+
+  const Elems = useRef({
+    name : null,
+    number : null,
+    pincode : null,
+    city : null,
+    adres :  null,
+    state : null,
+    country : null,
+    method : null,
+  })
 
   useEffect(()=>{
     setPrice(pre => {
@@ -18,20 +31,56 @@ export default function OrderSummary (){
       userObj.cart.forEach(v=>{
         newPrice.items += v.price ;
       });
+      newPrice.tax = Math.round(newPrice.items * 0.1) ;
       newPrice.handle = 27;
       newPrice.platform = Number(userObj.cart.length * 2);
-      const total = newPrice.items + newPrice.handle + newPrice.platform ;
+      const total = newPrice.items + newPrice.handle + newPrice.platform + newPrice.tax ;
       newPrice.total = Math.round(total/100) * 100 ;
       newPrice.discount = total - newPrice.total ;
       return newPrice;
+    });
+
+    if(userObj.address){
+      Elems.current.name.value = userObj.address.name ;
+      Elems.current.number.value = userObj.address.number ;
+      Elems.current.pincode.value = userObj.address.pincode ;
+      Elems.current.city.value = userObj.address.city ;
+      Elems.current.adres.value = userObj.address.adres ;
+      Elems.current.state.value = userObj.address.state ;
+      Elems.current.country.value = userObj.address.country ;
+    }
+  },[]);
+
+  function setAdress (e){
+    e.preventDefault();
+    const addrObj = {
+      name : Elems.current.name.value,
+      number : Number(Elems.current.number.value),
+      pincode : Number(Elems.current.pincode.value),
+      city : Elems.current.city.value,
+      adres : Elems.current.adres.value,
+      state : Elems.current.state.value,
+      country : Elems.current.country.value,
+      method : Elems.current.method.value,
+      total : price.total
+    }
+    setUserObj(pre =>{
+      const userObj = {...pre , address : addrObj}
+      return userObj ;
     })
-  },[])
+    navigate('/confirm')
+  }
+
+  useEffect(()=>{
+    localStorage.setItem("user",JSON.stringify(userObj));
+  },[userObj])
+
 
   return (
     <>
       <header className='header-div'>
         <div className="logo-div">
-          <Link className='nav-links' to='/'><h1>FootSter.</h1></Link>
+          <Link className='nav-links' to='/cart'><h1>FootSter.<span className='cart-h1'>cart</span></h1></Link>
         </div>
         <div className='cart-item'>
           <h2>Order Summary</h2>
@@ -61,33 +110,32 @@ export default function OrderSummary (){
           </div>
           <div className='order-address-details'>
             <h2>Delivery Address</h2>
-            <form className='address-form'>
+            <form onSubmit={(e)=>setAdress(e)} className='address-form'>
               <div>
-                <input required type="text" placeholder='Name' />
-                <input required type="number" placeholder='Number'/>
+                <input ref={e=>Elems.current.name = e} required type="text" placeholder='Name' />
+                <input ref={e=>Elems.current.number = e} required type="number" placeholder='Number'/>
               </div>
               <div>
-                <input required  type="number" placeholder='Pincode' />
-                <input required type="text" placeholder='City/District/Town' />
+                <input ref={e=>Elems.current.pincode = e} required  type="number" placeholder='Pincode' />
+                <input ref={e=>Elems.current.city = e} required type="text" placeholder='City/District/Town' />
               </div>
               <div>
-                <textarea required placeholder='Address (area and street)'></textarea>
+                <textarea ref={e=>Elems.current.adres = e} required placeholder='Address (area and street)'></textarea>
               </div>
               <div>
-                <input required type="text" placeholder='State'/>
-                <input required type="text" placeholder='Country'/>
+                <input ref={e=>Elems.current.state = e} required type="text" placeholder='State'/>
+                <input ref={e=>Elems.current.country = e} required type="text" placeholder='Country'/>
               </div>
               <div>
                 <input type="text" placeholder='Land Mark (optional)' />
-                <select>
+                <select ref={e=>Elems.current.method = e}>
                   <option>COD</option>
                   <option>UPI</option>
                   <option>CREDIT CARD</option>
                   <option>DEBIT CARD</option>
                 </select>
               </div>
-              <input className='set-address' type="submit" value='SAVE & DELIVER HERE' />
-              
+              <input  className='set-address' type="submit" value='SAVE & DELIVER HERE' />
             </form>
           </div>
         </div>
@@ -96,6 +144,10 @@ export default function OrderSummary (){
           <div>
             <div>Items ({userObj.cart.length}) :</div>
             <div>&#8377;{price.items}</div>
+          </div>
+           <div>
+            <div>Tax (10%) :</div>
+            <div>&#8377;{price.tax}</div>
           </div>
           <div>
             <div>Handling :</div>

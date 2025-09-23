@@ -7,6 +7,7 @@ import Blogs from './pages/blogs'
 import Cart from './pages/cart'
 import Wishlist from './pages/wishlist'
 import OrderSummary from './pages/ordersummary'
+import OrderSec from './pages/success'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Route path={'/cart'} element ={<Cart />} />
       <Route path={'/wishlist'} element ={<Wishlist/>} />
       <Route path={'/orderSummary'} element ={<OrderSummary/>} />
+      <Route path={'/confirm'} element={<OrderSec/>} />
     </Routes>
     </>
   )
