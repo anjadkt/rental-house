@@ -52,7 +52,7 @@ export function UserDrop(){
         <img  src="./icons/profile.png" alt="profile" />
         My Profile
         </div>
-       <div>
+       <div onClick={()=>navigate('/orders')}>
         <img  src="./icons/orders.png" alt="orders" />
         Orders
         </div>
