@@ -24,6 +24,15 @@ export function  useError (){
           errorObj.password = ""
         }
         return errorObj;
+      
+      case "conpass" :
+        const old = action.pass ;
+        if(old !== action.value){
+          errorObj.conpass = "Enter same password!"
+        }else{
+          errorObj.conpass = ""
+        }
+        return errorObj;
 
       case "email" :
         const email = action.value;

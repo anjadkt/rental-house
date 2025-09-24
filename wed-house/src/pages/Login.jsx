@@ -6,6 +6,7 @@ import axios from 'axios';
 
 export function Register(){
   const [error,setError] = useError();
+  const [already,setAlready] = useState("")
   const navigate = useNavigate();
   const inputElem = useRef({
     name : null,
@@ -13,12 +14,26 @@ export function Register(){
     password : null
   })
   
-  function setData (){
-
+  async function setData (e){
+    e.preventDefault();
     const name = inputElem.current.name.value;
     const email = inputElem.current.email.value;
     const password = inputElem.current.password.value;
     let isError = true;
+    console.log(email)
+
+    try{
+      const {data} = await axios.get(`http://localhost:5000/users?email=${email}`);
+      if(data.length>0){
+        setAlready("User already Exist");
+        return ;
+      }else{
+        setAlready("");
+      }
+
+    }catch(err){
+      console.log(err.message);
+    }
 
     for(let key in error){
       if(error[key]){
@@ -36,10 +51,10 @@ export function Register(){
         cart :[],
         favorite:[]
       })
-      navigate('/login');
+      navigate('/login')
     }
   }
-  
+  console.log(error);
   return (
     <>
      <div className='reg-main-container'>
@@ -49,7 +64,7 @@ export function Register(){
           <p> Register Now to continue</p>
         </div>
 
-        <form className='reg-form'>
+        <form onSubmit={e => setData(e)} className='reg-form'>
           <label htmlFor="name">Name</label>
           <input 
             ref={e=>inputElem.current.name = e} 
@@ -71,7 +86,7 @@ export function Register(){
             placeholder='Enter email' 
             id='email'
           />
-          <div className='error'>{error.email}</div>
+          <div className='error'>{error.email || already}</div>
 
           <label htmlFor="password">Password</label>
           <input  
@@ -83,9 +98,18 @@ export function Register(){
             id='password'
           />
           <div className='error'>{error.password}</div>
+
+          <label htmlFor="conpass">Confirm password</label>
+          <input  
+            onChange={e => setError({type:"conpass",value : e.target.value, pass:inputElem.current.password.value})} 
+            type="password" 
+            required 
+            placeholder='Enter password' 
+            id='conpass'
+          />
+          <div className='error'>{error.conpass}</div>
           
           <input 
-            onClick={setData} 
             className='submit-btn' 
             type="submit" 
             value='Sign up now' 
