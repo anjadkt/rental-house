@@ -42,14 +42,14 @@ export function Register(){
   
   return (
     <>
-     <div className='main-container'>
+     <div className='reg-main-container'>
         <div className='reg-container'>
-        <div className='welcome-div'>
+        <div className='reg-welcome-div'>
           <h2>For every FOOTSTEP</h2>
           <p> Register Now to continue</p>
         </div>
 
-        <form>
+        <form className='reg-form'>
           <label htmlFor="name">Name</label>
           <input 
             ref={e=>inputElem.current.name = e} 
@@ -91,7 +91,7 @@ export function Register(){
             value='Sign up now' 
           />
           <div className='error'></div>
-          <div className='sign-up'> Already have an account?<Link to="/login">Login </Link></div>
+          <div className='login-page-nav'> Already have an account?<Link to="/login">Login </Link></div>
         </form>
       </div>
      </div>

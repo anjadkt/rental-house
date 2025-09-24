@@ -8,6 +8,15 @@
       "password": "123456",
       "cart": [],
       "favorite": []
+    },
+    {
+      "id": 1758690045299,
+      "login": false,
+      "name": "jumana",
+      "email": "jumanafathimaep@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "favorite": []
     }
   ],
   "products": [
