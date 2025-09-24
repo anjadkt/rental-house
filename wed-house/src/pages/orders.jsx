@@ -6,10 +6,15 @@ export default function Orders (){
   return(
     <>
       <Header /> 
+      <h2 className="your-orders">Your Orders</h2>
       {
-        userObj.orders.map((v,i)=>(
-          <OrderItems key={i} data={v} />
-        ))
+        userObj.orders.length === 0 ? (
+          <h1 className="no-orders">No Orders Yet</h1>            
+        ) : (
+          userObj.orders.map((v,i)=>(
+              <OrderItems key={i} orderDetails={v} />
+            ))
+        )
       }
     </>
   )
