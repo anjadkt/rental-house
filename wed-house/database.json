@@ -8,11 +8,30 @@
       "password": "123456",
       "cart": [],
       "favorite": []
+    },
+    {
+      "id": 1758705259974,
+      "login": false,
+      "name": "anjad",
+      "email": "zathanaju@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "favorite": []
+    },
+    {
+      "id": 1758705317233,
+      "login": false,
+      "name": "anjad",
+      "email": "jumanafathimaep@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "favorite": []
     }
   ],
   "products": [
     {
       "id": 1,
+      "isFav":false,
       "quantity": 1,
       "rating": 50,
       "name": "Atlas Runner",
@@ -21,6 +40,7 @@
     },
     {
       "id": 2,
+      "isFav":false,
       "quantity": 1,
       "rating": 10,
       "name": "Harbor Slip-On",
@@ -29,6 +49,7 @@
     },
     {
       "id": 3,
+      "isFav":false,
       "quantity": 1,
       "rating": 15,
       "name": "Canyon Trail Pro",
@@ -37,6 +58,7 @@
     },
     {
       "id": 4,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Metro Casuals",
@@ -45,6 +67,7 @@
     },
     {
       "id": 5,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Nimbus Knit",
@@ -53,6 +76,7 @@
     },
     {
       "id": 6,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Retro Court",
@@ -61,6 +85,7 @@
     },
     {
       "id": 7,
+      "isFav":false,
       "quantity": 1,
       "rating": 35,
       "name": "Vertex High-Top",
@@ -69,6 +94,7 @@
     },
     {
       "id": 8,
+      "isFav":false,
       "quantity": 1,
       "rating": 40,
       "name": "Glide Minimal",
@@ -77,6 +103,7 @@
     },
     {
       "id": 9,
+      "isFav":false,
       "quantity": 1,
       "rating": 45,
       "name": "Summit Hiker",
@@ -85,6 +112,7 @@
     },
     {
       "id": 10,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Luxe Loafer",
@@ -93,6 +121,7 @@
     },
     {
       "id": 11,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Pulse Trainer",
@@ -101,6 +130,7 @@
     },
     {
       "id": 12,
+      "isFav":false,
       "quantity": 1,
       "rating": 50,
       "name": "Eco Walker",
@@ -109,6 +139,7 @@
     },
     {
       "id": 13,
+      "isFav":false,
       "quantity": 1,
       "rating": 10,
       "name": "Atlas Runner",
@@ -117,6 +148,7 @@
     },
     {
       "id": 14,
+      "isFav":false,
       "quantity": 1,
       "rating": 15,
       "name": "Harbor Slip-On",
@@ -125,6 +157,7 @@
     },
     {
       "id": 15,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Canyon Trail Pro",
@@ -133,6 +166,7 @@
     },
     {
       "id": 16,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Metro Casuals",
@@ -141,6 +175,7 @@
     },
     {
       "id": 17,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Nimbus Knit",
@@ -149,6 +184,7 @@
     },
     {
       "id": 18,
+      "isFav":false,
       "quantity": 1,
       "rating": 35,
       "name": "Retro Court",
@@ -157,6 +193,7 @@
     },
     {
       "id": 19,
+      "isFav":false,
       "quantity": 1,
       "rating": 40,
       "name": "Vertex High-Top",
@@ -165,6 +202,7 @@
     },
     {
       "id": 20,
+      "isFav":false,
       "quantity": 1,
       "rating": 45,
       "name": "Glide Minimal",
@@ -173,6 +211,7 @@
     },
     {
       "id": 21,
+      "isFav":false,
       "quantity": 1,
       "rating": 50,
       "name": "Summit Hiker",
@@ -181,6 +220,7 @@
     },
     {
       "id": 22,
+      "isFav":false,
       "quantity": 1,
       "rating": 10,
       "name": "Luxe Loafer",
@@ -189,6 +229,7 @@
     },
     {
       "id": 23,
+      "isFav":false,
       "quantity": 1,
       "rating": 15,
       "name": "Pulse Trainer",
@@ -197,6 +238,7 @@
     },
     {
       "id": 24,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Eco Walker",
@@ -207,6 +249,7 @@
   "branded": [
     {
       "id": 25,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Nike Air Zoom",
@@ -215,6 +258,7 @@
     },
     {
       "id": 26,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Adidas Ultraboost",
@@ -223,6 +267,7 @@
     },
     {
       "id": 27,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Puma Velocity ",
@@ -231,6 +276,7 @@
     },
     {
       "id": 28,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Reebok Floatride",
@@ -239,6 +285,7 @@
     },
     {
       "id": 29,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Skechers Go Walk",
@@ -247,6 +294,7 @@
     },
     {
       "id": 30,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "New Balance ",
@@ -255,6 +303,7 @@
     },
     {
       "id": 31,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Asics Gel ",
@@ -263,6 +312,7 @@
     },
     {
       "id": 32,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Under Armour ",
@@ -271,6 +321,7 @@
     },
     {
       "id": 33,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Fila Disruptor",
@@ -279,6 +330,7 @@
     },
     {
       "id": 34,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Converse Chuck",
@@ -287,6 +339,7 @@
     },
     {
       "id": 35,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Vans Old Skool",
@@ -295,6 +348,7 @@
     },
     {
       "id": 36,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Woodland Trekker",
@@ -303,6 +357,7 @@
     },
     {
       "id": 37,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Bata Power Run",
@@ -311,6 +366,7 @@
     },
     {
       "id": 38,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "HRX Sprint Pro",
@@ -319,6 +375,7 @@
     },
     {
       "id": 39,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Red Tape Sports",
@@ -327,6 +384,7 @@
     },
     {
       "id": 40,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Clarks Step",
@@ -335,6 +393,7 @@
     },
     {
       "id": 41,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Crocs LiteRide",
@@ -343,6 +402,7 @@
     },
     {
       "id": 42,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Hush Puppies Active",
@@ -351,6 +411,7 @@
     },
     {
       "id": 43,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Sparx Street Flex",
@@ -359,6 +420,7 @@
     },
     {
       "id": 44,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Lee Cooper Urban Walk",
@@ -367,6 +429,7 @@
     },
     {
       "id": 45,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Lotto Speed Ride",
@@ -375,6 +438,7 @@
     },
     {
       "id": 46,
+      "isFav":false,
       "quantity": 1,
       "rating": 30,
       "name": "Decathlon Kalenji",
@@ -383,6 +447,7 @@
     },
     {
       "id": 47,
+      "isFav":false,
       "quantity": 1,
       "rating": 20,
       "name": "Campus Max Air",
@@ -391,6 +456,7 @@
     },
     {
       "id": 48,
+      "isFav":false,
       "quantity": 1,
       "rating": 25,
       "name": "Action Campus Runner",

@@ -5,12 +5,17 @@ import '../styles/home.css'
 import{toast,ToastContainer} from 'react-toastify'
 
 export default function Product ({data}){
-  const [fav,setFav] = useState(false);
+  const [fav,setFav] = useState(()=>{
+      const {favorite} = JSON.parse(localStorage.getItem('user')) || {favorite : []}
+      const product = favorite.filter(d => d.id === data.id);
+      return product[0]?.isFav || false
+    });
+  
   const Elem = useRef({
     select :null
   })
   const navigate = useNavigate();
-  const [userObj,setUserObj] = useState(JSON.parse(localStorage.getItem('user')) || {login : false,});
+  const [userObj,setUserObj] = useState(JSON.parse(localStorage.getItem('user')) || {login : false});
 
   function addToCart() {
   if (!userObj.login) {
@@ -33,7 +38,28 @@ export default function Product ({data}){
   toast.success("Item added")
   localStorage.setItem('user', JSON.stringify(updatedUser));
   Elem.current.select.value = 1;
-}
+  }
+
+  function setFavorite(){
+    if (!userObj.login) {
+      navigate('/login');
+      return;
+    }
+    const updatedUser = JSON.parse(localStorage.getItem('user'));
+    let {favorite} = updatedUser ;
+
+    if(!fav){
+      favorite.push({...data , isFav : true});
+    }else{
+      favorite = favorite.filter(d => d.id !== data.id);
+    }
+    localStorage.setItem('user',JSON.stringify(
+      {...updatedUser,favorite:[...favorite]}
+    ))
+    setFav(!fav)
+
+  }
+ 
 
   if(!data){
     return <h3 className='no-product'>No product Found</h3>
@@ -46,7 +72,7 @@ export default function Product ({data}){
           <h4>{data.name}</h4 >
           <p>{data.color} Colors</p>
         </div>
-        <div onClick={()=>setFav(!fav)}>
+        <div onClick={setFavorite}>
           {
             fav ? <img src="./icons/favorite.png" alt="favorite" /> : <img src="./icons/favorite3.png" alt="favorite" /> 
           }
