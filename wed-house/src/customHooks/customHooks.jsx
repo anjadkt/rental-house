@@ -33,6 +33,14 @@ export function  useError (){
           errorObj.conpass = ""
         }
         return errorObj;
+      
+      case "oldpass" :
+        console.log(action)
+        if(action.value !== action.oldpass){
+          errorObj.current = "Wrong password!"
+        }else{
+          errorObj.current = ""
+        }
 
       case "email" :
         const email = action.value;

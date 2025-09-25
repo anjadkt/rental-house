@@ -126,6 +126,7 @@ export function Register(){
 export default function Login (){
   const [error,setError] = useError();
   const [err, setErr] = useState({});
+  const [forgot,setForgot] = useState('');
   const navigate = useNavigate();
   const inputElem = useRef({
     email : null,
@@ -185,7 +186,7 @@ export default function Login (){
             id='email' required 
             ref={e => inputElem.current.email = e}
           />
-          <div className='error'>{err && err.email || error.email}</div>
+          <div className='error'>{err && err.email || error.email || forgot}</div>
 
           <label htmlFor='password'>Password</label>
           <input 
@@ -198,7 +199,13 @@ export default function Login (){
             ref={e => inputElem.current.password = e}
           />
           <div className='error'>{error.password || err && err.password}</div>
-          <div className='forgot-div'>Forgot password?</div>
+          <div className='forgot-div' onClick={()=>{
+            const email = inputElem.current.email.value;
+            if(email){
+            }else{
+              setForgot("Enter an email!");
+            }
+          }}>Forgot password?</div>
 
           <input onClick={checkUser} className='submit-btn' type="submit" value='Sign in' />
           <div className='sign-up'> Don't have an account?<Link to="/signup"> Signup </Link></div>

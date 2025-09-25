@@ -9,6 +9,7 @@ import Wishlist from './pages/wishlist'
 import OrderSummary from './pages/ordersummary'
 import OrderSec from './pages/success'
 import Orders from './pages/orders'
+import Forgot from './components/forget'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <Route path={'/orderSummary'} element ={<OrderSummary/>} />
       <Route path={'/confirm'} element={<OrderSec/>} />
       <Route path={'/orders'} element ={<Orders/>} />
+      <Route path={'/forgot'} element = {<Forgot/>} />
     </Routes>
     </>
   )
