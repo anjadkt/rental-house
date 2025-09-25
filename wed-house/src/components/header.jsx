@@ -9,7 +9,7 @@ export default function Header (){
   const [drop,setDrop] = useState(false);
   const [userdrop,setUserdrop] = useState(false);
   const [search,setSearch] = useState(false);
-  const [data,setData] = useState();
+  const [products,setProducts] = useState();
   const {cart,login,name} = JSON.parse(localStorage.getItem('user')) || {
     login : false,
     cart :[]
@@ -17,10 +17,12 @@ export default function Header (){
   const navigate = useNavigate();
 
  async function listProducts(txt){
-    const da1 = await axios.get(`http://localhost:5000/branded?name=${txt}`);
-    const da2 = await axios.get(`http://localhost:5000/products?name=${txt}`);
-    const data = [...da1.data,...da2.data];
-    setData(data);
+    const text = txt.value.toLowerCase();
+    const {data} = await axios.get('http://localhost:5000/products');
+    setProducts(data.filter(v=>{
+      const name = v.name.toLowerCase();
+      return name.includes(text);
+    }))
   }
 
   return (
@@ -45,9 +47,10 @@ export default function Header (){
       </nav>
 
       <div className="buttons-container">
-         <div onFocus={()=>setSearch(true)} onBlur={()=>setSearch(false)} >
-          <input onChange={e => listProducts(e.target.value)} className='search-bar' type="text" placeholder='Search for products..' />
+         <div onClick={()=>setSearch(!search)}  >
+          <input onChange={e => listProducts(e.target)} className='search-bar' type="text" placeholder='Search for products..' />
           <img className='icons search-icon' src="./icons/search.png" alt="search for products.." />
+          {search && <button onClick={()=>setSearch(!search)} className='search-close'>X</button>}
          </div>
         
           <div className='cart-div' onClick={ ()=> login ? navigate('/cart') : navigate('/login')}>
@@ -69,7 +72,11 @@ export default function Header (){
         search && 
         <div className='search-output-div'>
           {
-            data &&  <Product data={data[0]} />
+            products && products.length>0 ? (
+              products.map((v,i)=> <Product key={i} data={v} />)
+            ) :(
+              <h3 style={{color:"gray"}}>No product found!</h3>
+            )
           }
         </div>
       }

@@ -5,8 +5,7 @@ import Product from "../components/product"
 import Title from '../components/title'
 
 export default function Products(){
-  const [products] = useFetch('http://localhost:5000/products');
-  const [branded] = useFetch('http://localhost:5000/branded')
+  const [products] = useFetch('http://localhost:5000/products?_page=1&_limit=24');
   return(
     <>
      <Header />
@@ -24,8 +23,8 @@ export default function Products(){
         <Title title={"Branded products"} />
         <hr />
          <div className="all-products-container-div">
-          { branded &&
-          branded.map((e,i)=>(
+          { products &&
+          products.map((e,i)=>(
             <Product key={i} data={e} />
           ))
           }
