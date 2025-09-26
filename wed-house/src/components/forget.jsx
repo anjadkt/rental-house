@@ -3,16 +3,40 @@ import '../styles/login.css'
 import { useError } from "../customHooks/customHooks"
 import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
+import{toast,ToastContainer} from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 export default function Forgot(){
   const [error,setError] = useError();
   const [userObj,setUserObj] = useState({});
   const inputElem = useRef({
-      email : null,
-      password : null,
-      old : null
+      old : null,
+      newPass : null
     });
+  const navigate = useNavigate();
+
+  function changePass(e){
+    e.preventDefault()
+    let isError = true;
+    for(let key in error){
+      if(error[key]){
+        isError = false ;
+        break;
+      }
+    }
+    if(isError){
+      axios.put(`http://localhost:5000/users/${userObj.id}`,{...userObj,password : inputElem.current.newPass.value});
+      sessionStorage.clear();
+      toast.success("password changed")
+      navigate('/login')
+    }else{
+      console.log(error)
+    }
+  }
   
+  useEffect(()=>{
+    setUserObj(JSON.parse(sessionStorage.getItem('user')));
+  },[])
   return (
     <>
     <div className="main-main-container">
@@ -23,7 +47,7 @@ export default function Forgot(){
           <p>Enter current Password<br/> and New passowrd<br/> correctly..</p>
         </div>
 
-        <form className='login-form'>
+        <form onSubmit={(e)=>changePass(e)} className='login-form'>
 
           <input 
             autoComplete='true' 
@@ -42,26 +66,30 @@ export default function Forgot(){
             type='password' 
             placeholder='New password'
             required 
-            ref={e => inputElem.current.password = e}
+            ref={e => inputElem.current.newPass = e}
           />
-          <div className='error2'></div>
+          <div className='error2'>{error.password}</div>
 
            <input 
-            onChange={e => setError({type:"password",value : e.target.value})} 
+            onChange={e => setError({type:"conpass",value : e.target.value,pass : inputElem.current.newPass.value})} 
             autoComplete='true' 
             type='password' 
             placeholder='confirm password' 
             required 
-            ref={e => inputElem.current.password = e}
           />
-          <div className='error2'></div>
+          <div className='error2'>{error.conpass}</div>
 
           <input className='submit-btn' type="submit" value='Change password' />
+          <button onClick={()=>{
+            sessionStorage.clear();
+            navigate('/login');
+          }} className='cancel-btn'>Cancel</button>
         </form>
 
       </div>
     </div>
     </div>
+    <ToastContainer autoClose={1000} />
      
     </>
   )

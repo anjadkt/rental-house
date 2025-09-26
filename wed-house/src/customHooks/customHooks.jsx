@@ -14,7 +14,7 @@ export function  useError (){
         }else{
           errorObj.name = ""
         }
-        return errorObj;
+        break;
 
       case "password":
         const length = action.value.length;
@@ -23,7 +23,7 @@ export function  useError (){
         }else{
           errorObj.password = ""
         }
-        return errorObj;
+        break;
       
       case "conpass" :
         const old = action.pass ;
@@ -32,15 +32,15 @@ export function  useError (){
         }else{
           errorObj.conpass = ""
         }
-        return errorObj;
+        break;
       
       case "oldpass" :
-        console.log(action)
         if(action.value !== action.oldpass){
           errorObj.current = "Wrong password!"
         }else{
           errorObj.current = ""
         }
+        break;
 
       case "email" :
         const email = action.value;
@@ -49,11 +49,12 @@ export function  useError (){
         }else{
           errorObj.email = ""
         }
-        return errorObj ;
+        break; 
       
       default :
-        return errorObj
+        break;
     }
+    return errorObj ;
   }
 
   return [error,setError]

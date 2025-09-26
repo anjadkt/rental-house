@@ -8,24 +8,6 @@
       "password": "123456",
       "cart": [],
       "favorite": []
-    },
-    {
-      "id": 1758705259974,
-      "login": false,
-      "name": "anjad",
-      "email": "zathanaju@gmail.com",
-      "password": "123456",
-      "cart": [],
-      "favorite": []
-    },
-    {
-      "id": 1758705317233,
-      "login": false,
-      "name": "anjad",
-      "email": "jumanafathimaep@gmail.com",
-      "password": "123456",
-      "cart": [],
-      "favorite": []
     }
   ],
   "products": [

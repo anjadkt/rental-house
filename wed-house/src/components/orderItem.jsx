@@ -20,7 +20,9 @@ export default function OrderItems ({orderDetails}){
           orderDetails.cart.map((v,i)=>(
             <div className="ordered-items-container" key={i}>
               <div>
-                <img className="ordered-item-img" src={`./products/shoe-${v.id}.png`} alt="" />
+                <div className="ordered-item-img">
+                  <img  src={`./products/shoe-${v.id}.png`} alt="" />
+                </div>
                 <div className="ordered-item-details">
                   <h4>{v.name}</h4>
                   <p>Quantity : {v.quantity}</p>

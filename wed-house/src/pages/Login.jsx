@@ -54,7 +54,6 @@ export function Register(){
       navigate('/login')
     }
   }
-  console.log(error);
   return (
     <>
      <div className='reg-main-container'>
@@ -165,7 +164,7 @@ export default function Login (){
     }
   }
   
-
+  console.log(error);
   return (
     <>
     <div className='main-container'>
@@ -201,10 +200,21 @@ export default function Login (){
           <div className='error'>{error.password || err && err.password}</div>
           <div className='forgot-div' onClick={()=>{
             const email = inputElem.current.email.value;
-            if(email){
-            }else{
-              setForgot("Enter an email!");
+            async function checkEmail() {
+              try{
+                const {data} = await axios.get(`http://localhost:5000/users?email=${email}`);
+                if(data.length>0){
+                  sessionStorage.setItem('user',JSON.stringify(data[0]));
+                  navigate('/forgot');
+                }else{
+                  setForgot("user not found!");
+                }
+              }catch(err){
+                console.log(err.message)
+              }
             }
+            checkEmail();
+
           }}>Forgot password?</div>
 
           <input onClick={checkUser} className='submit-btn' type="submit" value='Sign in' />
