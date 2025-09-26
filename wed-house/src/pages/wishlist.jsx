@@ -2,7 +2,7 @@ import Header from "../components/header"
 import Product from "../components/product";
 import '../styles/wishlist.css'
 export default function Wishlist (){
-  const {favorite} = JSON.parse(localStorage.getItem('user'));
+  const {favorite} = JSON.parse(localStorage.getItem('user')) || [];
   return (
     <>
      <Header />
@@ -10,7 +10,7 @@ export default function Wishlist (){
      <hr />
      <div className="wishlist-product-container">
       {
-        favorite.length>0 ? (
+        favorite?.length>0 ? (
           
             favorite.map(v =>(
               <Product data={v}/>

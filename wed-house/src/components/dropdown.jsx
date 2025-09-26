@@ -1,5 +1,8 @@
 
   import {Link , useNavigate} from 'react-router-dom'
+import { useFetch } from '../customHooks/customHooks';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
   
   const data = {
     products :["Casuals","Sports","Heavy-duty","Traditional","Indoor","Minimal"],
@@ -45,6 +48,13 @@ export default function Dropdown(){
 
 export function UserDrop(){
   const navigate = useNavigate();
+  async function postJson(){
+    const userObj = JSON.parse(localStorage.getItem('user'));
+    const {data}  = await axios.get(` http://localhost:5000/users?id=${userObj.id}`);
+    const updateUser = {...userObj,email : data[0].email,password : data[0].password,login : false}
+    axios.put(`http://localhost:5000/users/${userObj.id}`,updateUser);
+    localStorage.clear();
+  }
   return(
     <>
      <div className="user-drop-div">
@@ -64,7 +74,7 @@ export function UserDrop(){
         <img  src="./icons/notification.png" alt="" />
         Notifications
         </div>
-       <div onClick={()=>localStorage.clear()}>
+       <div onClick={postJson}>
         <img  src="./icons/login.png" alt="" />
         Logout
         </div>

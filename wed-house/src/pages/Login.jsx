@@ -49,7 +49,9 @@ export function Register(){
         email,
         password,
         cart :[],
-        favorite:[]
+        favorite:[],
+        address : null,
+        orders : []
       })
       navigate('/login')
     }
@@ -156,7 +158,7 @@ export default function Login (){
       setErr(obj);
 
       if(Object.keys(obj)?.length === 0){
-        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null,address : null,orders : []}));
+        localStorage.setItem('user',JSON.stringify({...data,login : true,password : null , email:null}));
         navigate('/');
       }
     }catch(err){
@@ -164,7 +166,6 @@ export default function Login (){
     }
   }
   
-  console.log(error);
   return (
     <>
     <div className='main-container'>
@@ -215,7 +216,7 @@ export default function Login (){
             }
             checkEmail();
 
-          }}>Forgot password?</div>
+          }}>Change password?</div>
 
           <input onClick={checkUser} className='submit-btn' type="submit" value='Sign in' />
           <div className='sign-up'> Don't have an account?<Link to="/signup"> Signup </Link></div>
